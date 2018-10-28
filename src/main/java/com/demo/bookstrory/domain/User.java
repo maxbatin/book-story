@@ -30,7 +30,7 @@ public class User implements 	UserDetails, Serializable{
    @Column(name="Id", nullable=false, updatable = false)
    private Long id;
    
-   private String userName;
+   private String username;
    private String password;
    private String firstName;
    private String lastName;
@@ -51,11 +51,11 @@ public void setId(Long id) {
 }
 
 public String getUserName() {
-	return userName;
+	return username;
 }
 
 public void setUserName(String userName) {
-	this.userName = userName;
+	this.username = userName;
 }
 
 public String getPassword() {

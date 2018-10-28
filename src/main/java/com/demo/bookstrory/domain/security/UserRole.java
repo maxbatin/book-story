@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.demo.bookstrory.domain.User;
+
 @Entity
 @Table(name="user_role")
 public class UserRole implements Serializable{
