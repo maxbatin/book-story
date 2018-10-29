@@ -1,6 +1,4 @@
 package com.demo.bookstrory.config;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,13 +8,15 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.session.web.http.HeaderHttpSessionStrategy;
-//import org.springframework.session.web.http.HttpSessionStrategy;
+import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
+import org.springframework.session.web.http.HeaderHttpSessionStrategy;
+import org.springframework.session.web.http.HttpSessionStrategy;
 
 import com.demo.bookstrory.service.UserSecurityService;
 
 @Configuration
 @EnableWebSecurity
+@EnableSpringHttpSession
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private Environment env;
@@ -34,7 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			"/book/**",
 			"/user/**"
 	};
-	@Override
 	protected void configure (HttpSecurity http) throws Exception{
 		http.csrf().disable().cors().disable().httpBasic().and().authorizeRequests().
 		antMatchers(PUBLIC_MATHCES).permitAll().anyRequest().authenticated();
@@ -46,9 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 	}
 	
-	//@Bean
-	//public HttpSessionStrategy httpSessionStrategy() {
-//	/	return new HeaderHttpSessionStrategy();
-//	}
+	@Bean
+	public HttpSessionStrategy httpSessionStrategy() {
+		return new HeaderHttpSessionStrategy();
+	}	
 
 }

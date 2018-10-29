@@ -11,5 +11,5 @@ public class HttpSessionConfig {
 	public LettuceConnectionFactory connectionFactory() {
 		return new LettuceConnectionFactory();
 	}
-
+	
 }
