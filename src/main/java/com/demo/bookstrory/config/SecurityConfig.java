@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
+import org.springframework.session.data.redis.config.ConfigureRedisAction;
 import org.springframework.session.web.http.HeaderHttpSessionStrategy;
 import org.springframework.session.web.http.HttpSessionStrategy;
 
@@ -16,7 +16,6 @@ import com.demo.bookstrory.service.UserSecurityService;
 
 @Configuration
 @EnableWebSecurity
-@EnableSpringHttpSession
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private Environment env;
@@ -49,5 +48,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	public HttpSessionStrategy httpSessionStrategy() {
 		return new HeaderHttpSessionStrategy();
 	}	
+	@Bean
+	public static ConfigureRedisAction configureRedisAction() {
+	    return ConfigureRedisAction.NO_OP;
+	}
 
 }

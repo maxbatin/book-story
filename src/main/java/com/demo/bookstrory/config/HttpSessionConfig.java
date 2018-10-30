@@ -9,7 +9,7 @@ public class HttpSessionConfig {
 	
 	@Bean
 	public LettuceConnectionFactory connectionFactory() {
-		return new LettuceConnectionFactory();
+		return new LettuceConnectionFactory("192.168.11.28", 6379);
 	}
 	
 }

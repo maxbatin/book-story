@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User implements 	UserDetails, Serializable{
-   private static final long serialVersionUID = 893893L;
+   private static final long serialVersionUID = 902783495L;
    
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,7 +34,7 @@ public class User implements 	UserDetails, Serializable{
    private String password;
    private String firstName;
    private String lastName;
-   private String email;
+   private String email;	
    private String phone;
    private boolean enabled = true;
    
